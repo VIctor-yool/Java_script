@@ -8027,3 +8027,23 @@ const a4 = data.filter(
   (v, i) => v.department == "Engineering" && parseInt(v.money.slice(1)) >= 5000
 );
 console.log(a4);
+
+// 5. 전체 데이터에서 fullname을 firstname 으로 바꾸고,
+// creditcard를 앞에 4개만 숫자 나타내고 나머지는 ***로 바꾸고
+// 달러를 원화로 환율해서 나타내기 !
+
+const a5 = data.map((v) => {
+  v.fullName = v.fullName.split(" ")[0];
+  v.creditCard =
+    v.creditCard.slice(0, 4) +
+    v.creditCard
+      .slice(4)
+      .split("")
+      .map((v) => "*")
+      .join("");
+  v.money = +v.money.slice(1) * 1400;
+
+  return v;
+});
+
+console.log(a5);
